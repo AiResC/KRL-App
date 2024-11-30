@@ -1,0 +1,248 @@
+#:kivy 2.0.0
+#:import pages pages
+#:set black (0,0,0,1) #чорний колір
+#:set white (1,1,1,1)
+#:set rounded_font 'fonts/Comfortaa-Bold.ttf' #шрифт
+
+MainMenu:
+
+
+
+
+#Головне меню
+<MainMenu>:
+    title:"KRL App"
+        #Налаштування білого фону
+    canvas.before:
+        Color:
+            rgba:white
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+    #Головний екран з кнопками навігації
+    Screen:
+        name: 'Головна'
+        id: 'menu'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою будинку та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.current = 'Головна'
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+            BoxLayout:
+                orientation:'vertical'
+                spacing: '20dp'
+                #Заокруглений прямокутник з надписом про кінець та початок уроку
+                Label:
+                    text: root.lesson_text
+                    size_hint: 1, .33
+                    font_name: rounded_font
+                    font_size: 35
+                    color: .1,0,.1,1
+                    canvas.before:
+                        Color:
+                            rgba: .8,.8,.8,1
+                        Rectangle:
+                            pos:self.pos
+                            size:self.size
+                #Кнопки головного екрану
+                GridLayout:
+                    padding: '25dp', '15dp', '25dp', '15dp'
+                    spacing: '15dp'
+                    cols:2
+                    rows:3
+                    #Кнопка "Дзвінки"
+                    Button:
+                        on_press: root.transition.duration=.001  ; root.current='Дзвінки'
+                        background_normal: 'images/bell.png'
+                    #Кнопка "Консультації"
+                    Button:
+                        on_press: root.transition.duration=.001  ; root.current='Консультації'
+                        background_normal: 'images/cons.png'
+                    #Кнопка "Розклад"
+                    Button:
+                        on_press: root.transition.duration=.001  ; root.current='Розклад'
+                        background_normal: 'images/list.png'
+                    #Кнопка "Бібліотека"
+                    Button:
+                        on_press: root.transition.duration=.001  ; root.current='Бібліотека'
+                        background_normal: 'images/library.png'
+                    #Кнопка "Соціальні Мережі"
+                    Button:
+                        on_press: root.transition.duration=.001  ; root.current='Соц. Мережі'
+                        background_normal: 'images/social.png'
+                    #Кнопка "Налаштування"
+                    Button:
+                        on_press: root.transition.duration=.001  ; root.current='Налаштування'
+                        background_normal: 'images/settings.png'
+    #Екран сторінки "Консультації"
+    Screen:
+        name:'Консультації'
+        id:'cons'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою будинку та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.current = 'Головна'
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+            #Імпортована сторінка з pages.kv
+            Cons:
+    #Екран сторінки "Дзвінки"
+    Screen:
+        name:'Дзвінки'
+        id:'bells'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою будинку та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.current = 'Головна'
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+            #Імпортована сторінка з pages.kv
+            Bells:
+    #Екран сторінки "Розклад"
+    Screen:
+        name:'Розклад'
+        id:'list'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою будинку та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                Button:
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.current = 'Головна'
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+            #Імпортована сторінка з pages.kv
+            List:
+
+    #Екран сторінки "Налаштування"
+    Screen:
+        name:'Налаштування'
+        id:'settings'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою будинку та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.current = 'Головна'
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+            #Імпортована сторінка з pages.kv
+            Setting:
+    #Екран сторінки "Соц. Мережі"
+    Screen:
+        name:'Соц. Мережі'
+        id:'social'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою будинку та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.current = 'Головна'
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+            #Імпортована сторінка з pages.kv
+            Social:
+    #Екран сторінки "Бібліотека"
+    Screen:
+        name:'Бібліотека'
+        id:'library'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою будинку та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.current = 'Головна'
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+            #Імпортована сторінка з pages.kv
+            Library:

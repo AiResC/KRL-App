@@ -1,0 +1,480 @@
+
+#:kivy 2.0.0
+#:set rounded_font 'fonts/Comfortaa-Bold.ttf' #шрифт
+#:set black (0,0,0,3)
+#:set semi_black (.2,.2,.2,3)
+#:set purple (.66,.32,.8,1)
+#:set light_purple (.66,.32,.8,.5)
+#:set soft_purple (.92,.45,.97,.4)
+#:set white (1,1,1,3)
+#:set yellow (.5,.5,0,.6)
+#:set state True
+
+<Cons>:
+    Screen:
+        name:'Вибір дня'
+        canvas.before:
+            Color:
+                rgba:.8,.8,.8,1
+            Rectangle:
+                size:self.size
+                pos:self.pos
+        padding: '7dp', '10dp', '7dp', '30dp'
+
+
+
+<Bells>:
+    canvas.before:
+        Color:
+            rgba:.8,.8,.8,1
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    padding: '7dp', '10dp', '7dp', '30dp'
+    BoxLayout:
+        spacing:'2dp'
+        orientation:'vertical'
+        LessonForBells:
+            lesson_number: '1 урок'
+            lesson_time: "8:30"
+        BreakForBells:
+            time: '9:15'
+        LessonForBells:
+            lesson_number: '2 урок'
+            lesson_time: "9:25"
+        EatForBells:
+            kind: "Перший сніданок"
+            time: "10:10"
+        LessonForBells:
+            lesson_number:"3 урок"
+            lesson_time: "10:30"
+        EatForBells:
+            kind:'Другий сніданок'
+            time: '11:15'
+        LessonForBells:
+            lesson_number:'4 урок'
+            lesson_time:'11:25'
+        BreakForBells:
+            time:'12:10'
+        LessonForBells:
+            lesson_number: '5 урок'
+            lesson_time: '12:20'
+        EatForBells:
+            kind:'Обід(7-9 кл)'
+            time:'13:05'
+        LessonForBells:
+            lesson_number: '6 урок'
+            lesson_time: '13:25'
+        EatForBells:
+            kind: 'Обід(9-11 кл)'
+            time: '14:10'
+        LessonForBells:
+            lesson_number:'7 урок'
+            lesson_time:'14:30'
+        BreakForBells:
+            time:'15:15'
+        LessonForBells:
+            lesson_number:'8 урок'
+            lesson_time:'15:20'
+        EatForBells:
+            kind:'Полуденок'
+            time:'16:05'
+
+
+
+
+
+
+<Library>:
+    Screen:
+        name:'Вибір класу(Бібліотека)'
+        id:'classes'
+        ScrollView:
+            orientation: 'vertical'
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba:.8,.8,.8,1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                orientation: 'vertical'
+                padding: '10dp','10dp','10dp','10dp'
+                spacing: '10dp'
+                TwoClassesLibrary:
+                    class1: '7-А клас'
+                    class11: '7-А клас(Бібліотека)'
+                    class2: '7-Б клас'
+                    class22: '7-Б клас(Бібліотека)'
+                TwoClassesLibrary:
+                    class1:'8-А клас'
+                    class11: '8-А клас(Бібліотека)'
+                    class2:'8-Б клас'
+                    class22: '8-Б клас(Бібліотека)'
+                TwoClassesLibrary:
+                    class1:'9-А клас'
+                    class11: '9-А клас(Бібліотека)'
+                    class2:'9-Б клас'
+                    class22: '9-Б клас(Бібліотека)'
+                TwoClassesLibrary:
+                    class1:'10-А клас'
+                    class11: '10-А клас(Бібліотека)'
+                    class2:'10-Б клас'
+                    class22: '10-Б клас(Бібліотека)'
+                OneClassLibrary:
+                    class1:'11 клас'
+                    class11: '11 клас(Бібліотека)'
+    Screen:
+        name:'11 клас(Бібліотека)'
+        id:'11thA'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою "назад" та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                canvas.before:
+                    Color:
+                        rgba: .9,.9,.9,1
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.transition.duration=0.0001 ; root.current = 'Вибір класу(Бібліотека)'
+            BoxLayout:
+                orientation:'vertical'
+                padding:'7dp','5dp','7dp','5dp'
+                spacing:'2dp'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Математика'
+                    link:'https://pidruchnyk.com.ua/uploads/book/11-klas-matematika-merzljak-2019.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Біологія'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-biologija-sobol-2019.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Історія України'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-istorija-ukrajini-mudrij-2019.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Українська мова'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-ukrajinska-mova-glazova-2019.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Географія'
+                    link:'https://lib.imzo.gov.ua/wa-data/public/site/books2/pidruchnyky-11-klas-2019/17-geografiya-11-klas/heohrafiia-riven-standartu-pidruchnyk-dlia-11-klasu-zzso-dovgan-g-d-stadnyk-o-g.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Захист України'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-zakhist-vitchizni-gudima-2019-med.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Українська література'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-ukrajinska-literatura-avramenko-2019.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Хімія'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-khimija-lashevska-2019.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Фізика та Астрономія'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-fizika-astronomiia-holovko-2019.pdf'
+                BookButton:
+                    size_hint:(1,.2)
+                    book:'Зарубіжна література'
+                    link:'https://files.pidruchnyk.com.ua/uploads/book/11-klas-zarubizhna-literatura-kovbasenko-2019-stand.pdf'
+
+
+
+<List>:
+    Screen:
+        name:'Вибір класу'
+        id:'classes'
+        ScrollView:
+            orientation: 'vertical'
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba:.8,.8,.8,1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                orientation: 'vertical'
+                padding: '10dp','10dp','10dp','10dp'
+                spacing: '10dp'
+                TwoClasses:
+                    class1: '7-А клас'
+                    class2: '7-Б клас'
+                TwoClasses:
+                    class1:'8-А клас'
+                    class2:'8-Б клас'
+                TwoClasses:
+                    class1:'9-А клас'
+                    class2:'9-Б клас'
+                TwoClasses:
+                    class1:'10-А клас'
+                    class2:'10-Б клас'
+                OneClass:
+                    class1:'11 клас'
+    Screen:
+        name:'7-А клас'
+        id:'7thA'
+        BoxLayout:
+            orientation: 'vertical'
+            #Екшн бар, з кнопкою "назад" та надписом назви екрану
+            BoxLayout:
+                size_hint: 1, None
+                height: '40dp'
+                screen_manager: None
+                canvas.before:
+                    Color:
+                        rgba: .9,.9,.9,1
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                Label:
+                    text: root.current
+                    color: black
+                    size_hint: 1, None
+                    height: '40dp'
+                    font_name: rounded_font
+                Button:
+                    text: 'A'
+                    size_hint: (None, None)
+                    size: '40dp', '40dp'
+                    background_normal: 'images/home_up.png'
+                    background_down: 'images/home_down.png'
+                    on_release: root.transition.duration=0.0001 ; root.current = 'Вибір класу'
+            BoxLayout:
+                #Розклад для класу
+
+
+
+
+
+
+<Setting>:
+    
+    spacing:'5dp'
+    padding:'10dp','5dp','10dp','5dp'
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:.8,.8,.8,1
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    Button:
+        text:""
+        font_name:rounded_font
+        size_hint:(1,.1)
+        background_normal:''
+        color:black
+    
+    Label:
+        text:''
+    Label:
+        text:''
+        size_hint:(1,.05)
+        color:black
+        font_name:rounded_font
+        font_size:25
+        
+
+
+
+<Social>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba:.8,.8,.8,1
+            Rectangle:
+                size:self.size
+                pos:self.pos
+        spacing:'2dp'
+        padding:'2dp','2dp','2dp','95dp'
+        orientation:'vertical'
+        Button:
+            background_normal:'images/facebook_social.png'
+            on_press:root.open_facebook()
+        Button:
+            background_normal:'images/instagram_social.png'
+            on_press:root.open_instagram()
+        Button:
+            background_normal:'images/telegram_social.png'
+            on_press:root.open_telegram()
+        Button:
+            background_normal:'images/tiktok_social.png'
+            on_press:root.open_tiktok()
+
+
+
+#
+#
+#
+#
+#
+#ДОДАТКИ.
+#FOR BELLS
+<LessonForBells>:
+    spacing:'1dp'
+    Label:
+        text: root.lesson_number
+        font_name: rounded_font
+        color: black
+        canvas.before:
+            Color:
+                rgba:white
+            Rectangle:
+                size:self.size
+                pos:self.pos
+    Label:
+        size_hint:(.5,1)
+        text: root.lesson_time
+        font_name: rounded_font
+        color: black
+        canvas.before:
+            Color:
+                rgba:white
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+<BreakForBells>:
+    spacing:'1dp'
+    Label:
+        text: 'Перерва'
+        font_name: rounded_font
+        color: black
+        canvas.before:
+            Color:
+                rgba:.9,.9,.9,1
+            Rectangle:
+                size:self.size
+                pos:self.pos
+    Label:
+        size_hint:(.5,1)
+        text: root.time
+        font_name: rounded_font
+        color: black
+        canvas.before:
+            Color:
+                rgba:.9,.9,.9,1
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+<EatForBells>:
+    spacing: '1dp'
+    Label:
+        text: root.kind
+        font_name: rounded_font
+        color: black
+        canvas.before:
+            Color:
+                rgba:.9,.9,.9,1
+            Rectangle:
+                size:self.size
+                pos:self.pos
+    Label:
+        size_hint:(.5,1)
+        text: root.time
+        font_name: rounded_font
+        color: black
+        canvas.before:
+            Color:
+                rgba:.9,.9,.9,1
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+#
+#
+#
+#
+#
+#FOR LIST
+<TwoClasses>:
+    orientation: 'vertical'
+    spacing:'2dp'
+    Button:
+        background_normal:''
+        font_name: rounded_font
+        color:black
+        text:root.class1
+        on_press: root.parent.parent.parent.parent.transition.duration = 0.0001 ; root.parent.parent.parent.parent.current = root.class1
+    Button:
+        background_normal:''
+        color:black
+        font_name: rounded_font
+        text:root.class2
+        on_press: root.parent.transition.duration = 0.0001 ; root.root.current = root.class2
+
+<OneClass>:
+    Button:
+        background_normal:''
+        color:black
+        font_name: rounded_font
+        text:root.class1
+        on_press: root.root.transition.duration = 0.0001 ; root.root.current = root.class1
+
+<Day>:
+    Button:
+        background_normal:''
+        color:black
+        font_name: rounded_font
+        text:root.day
+        on_press: root.root.transition.duration = 0.0001 ; root.root.current = root.day
+
+
+
+
+#
+#
+#
+#FOR LIBRARY
+<TwoClassesLibrary>:
+    orientation: 'vertical'
+    spacing:'2dp'
+    Button:
+        background_normal:''
+        font_name: rounded_font
+        color:black
+        text:root.class1
+        on_press: root.parent.parent.parent.parent.transition.duration = 0.0001 ; root.parent.parent.parent.parent.current = root.class11
+    Button:
+        background_normal:''
+        color:black
+        font_name: rounded_font
+        text:root.class2
+        on_press: root.parent.parent.parent.parent.transition.duration = 0.0001 ; root.parent.parent.parent.parent.current = root.class22
+
+<OneClassLibrary>:
+    Button:
+        background_normal:''
+        color:black
+        font_name: rounded_font
+        text:root.class1
+        on_press: root.parent.parent.parent.parent.transition.duration = 0.0001 ; root.parent.parent.parent.parent.current = root.class11
+
+<BookButton>:
+    Button:
+        background_normal:'images/soft_gray.jpg'
+        text:root.book
+        font_name:rounded_font
+        color:black
+        on_press:root.open_link(root.link)
